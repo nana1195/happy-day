@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regalo para el gato</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('gato.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            margin: 0; /* Para eliminar el margen predeterminado */
+            padding: 0; /* Para eliminar el relleno predeterminado */
+        }
+        #container {
+            position: relative; /* Agregamos posición relativa al contenedor */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            z-index: 1; /* Para asegurar que el contenido esté encima del fondo */
+        }
+        #gift-box {
+            width: 100px; /* Cambia el tamaño según sea necesario */
+            height: 100px;
+            position: absolute;
+            cursor: pointer; /* Cambia el cursor cuando se coloca sobre la caja de regalo */
+            z-index: 2; /* Para asegurarse de que la caja de regalo esté por encima del fondo */
+            bottom: 50px; /* Mover un poco más arriba */
+            transition: transform 0.5s; /* Agregar una transición para suavizar el movimiento */
+        }
+        #message {
+            width: 300px; /* Cambia el tamaño de la imagen del mensaje según sea necesario */
+            height: auto;
+            position: absolute;
+            bottom: 20px; /* Ajusta la posición vertical del mensaje */
+            z-index: 2; /* Para asegurarse de que el mensaje esté por encima del fondo */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="message" src="mensajes.png" alt="Mensaje"> <!-- Cambia esto por la URL de tu imagen del mensaje -->
+        <img id="gift-box" src="gif.png" alt="Caja de regalo"> <!-- Cambia esto por la URL de tu imagen de la caja de regalo -->
+    </div>
+
+    <script>
+        document.getElementById("gift-box").addEventListener("click", function() {
+            var giftBox = document.getElementById("gift-box");
+            var container = document.getElementById("container");
+            var containerRect = container.getBoundingClientRect();
+            var newX = Math.random() * (containerRect.width - giftBox.width);
+            var newY = Math.random() * (containerRect.height - giftBox.height);
+
+            // Mueve la caja de regalo a una nueva posición aleatoria
+            giftBox.style.left = newX + "px";
+            giftBox.style.top = newY + "px";
+        });
+    </script>
+</body>
+</html>
